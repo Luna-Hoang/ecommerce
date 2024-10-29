@@ -67,9 +67,6 @@
                 </div>            
             </div>
 
-            <footer class="footer">
-            <jsp:include page="footer/footer.jsp"></jsp:include>
-        </footer> 
 
         <script type="text/javascript">
             $("#frmCreateOrder").submit(function () {

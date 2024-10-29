@@ -183,6 +183,7 @@ public class AccountDB {
         Account p = new Account();
         Connection connection = Util.getConnection();
         String sql = "SELECT * FROM `account` WHERE username='" + userName + "' and password='" + pass + "'";
+        System.out.println(sql);
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

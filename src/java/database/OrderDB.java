@@ -30,6 +30,7 @@ public class OrderDB {
             ResultSet rs = ps.executeQuery(); 
             while (rs.next()) {
                 Order_product p = new Order_product();
+                System.out.println(p);
                 p.setIdOrder(rs.getInt("Id_order"));
                 p.setUsername(rs.getString("username"));
                 p.setList_id(rs.getString("list_id_product"));
@@ -56,13 +57,14 @@ public class OrderDB {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Order_product p = new Order_product();
+                System.out.println(rs);
                 p.setShop(rs.getString("shop"));
                 p.setUsername(userId);                
-                p.setIdOrder(rs.getInt("Id_order"));
+                p.setIdOrder(rs.getInt("id_order"));
                 p.setUsername(rs.getString("username"));
-                p.setList_id(rs.getString("list_id_product"));
-                p.setList_name(rs.getString("list_name_product"));
-                p.setTotal_quantity(rs.getString("toatl_quantity"));
+                p.setList_id(rs.getString("list_id"));
+                p.setList_name(rs.getString("list_name"));
+                p.setTotal_quantity(rs.getString("total_quantity"));
                 p.setTotal_amount(rs.getString("total_amount"));
                 p.setImage(rs.getString("image"));
                 p.setDes(rs.getString("des"));

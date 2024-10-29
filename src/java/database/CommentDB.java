@@ -20,7 +20,8 @@ public class CommentDB {
     public static List<Comment> getIdProduct(String id){
         List<Comment> cm = new ArrayList<>();
         Connection connection = Util.getConnection();
-        String sql = "SELECT * FROM `comment` WHERE id_product = '" +id+ "'";
+        String sql = "SELECT * FROM `comment` WHERE idProduct = '" +id+ "'";
+        System.out.println(sql);
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -28,10 +29,10 @@ public class CommentDB {
                 Comment com = new Comment();
                 com.setId(rs.getInt("id"));
                 com.setUsername(rs.getString("username"));
-                com.setIdProduct(rs.getString("id_product"));
+                com.setIdProduct(rs.getString("idProduct"));
                 com.setContent(rs.getString("content"));
-                com.setCreateBy(rs.getString("createdBy"));
-                com.setCreateDate(rs.getString("createdDate"));
+                com.setCreateBy(rs.getString("createBy"));
+                com.setCreateDate(rs.getString("createDate"));
                 com.setImgUser(rs.getString("imgUser"));
                 cm.add(com);                
             }
@@ -43,7 +44,7 @@ public class CommentDB {
     
     public void insertCM(String name, String idPro, String content, String createBy, String createDate, String imgUser){
         Connection connection = Util.getConnection();
-        String sql = "INSERT INTO `comment`(username, id_product, content, createdBy, createdDate, imgUser) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO `comment`(username, idProduct, content, createBy, createDate, imgUser) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);

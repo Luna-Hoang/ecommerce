@@ -18,7 +18,7 @@ public class ProductDB {
 
     public static List<Products> getAllProducts(int slPro, String sxPro) {
         List<Products> list = new ArrayList<>();
-        String str = "SELECT * FROM `fashion`";
+        String str = "SELECT * FROM `products`";
         Connection connection = Util.getConnection();
         if (slPro > 0 && (sxPro.length() == 0)) {
             str += "LIMIT " + slPro;
@@ -52,14 +52,14 @@ public class ProductDB {
     // lấy tất cả các sản phẩm theo kieu type (lay ra all tuong tu)
     public static List<Products> getAll(String type) {
         List<Products> list = new ArrayList<>();
-        String str = "SELECT * FROM `fashion` WHERE type = ?";
+        String str = "SELECT * FROM `products` WHERE type = ?";
         // connection : thiết lập kết nối đến CSDL
         Connection connection = Util.getConnection();
         try {
             // dùng để thực thi các câu lệnh truy vấn SQL trong JDBC
             PreparedStatement ps = connection.prepareStatement(str);
             if (type.equals("")) {
-                ps.setString(1, "1");
+                ps.setString(1, "Electronics");
             } else {
                 ps.setString(1, type);
             }
@@ -86,10 +86,10 @@ public class ProductDB {
     // lay 1 san pham
     public static Products getProducts(String id) {
         Products p = null;
-        String str = "SELECT *, store.name as storeName, store.id as storeId, category.name as nameCate FROM `fashion` "
-                + "JOIN `category` ON `fashion`.type = `category`.id "
-                + "JOIN `store` ON `fashion`.shop = `store`.id"
-                + " WHERE fashion.id = '" + id + "'";
+        String str = "SELECT *, store.name as storeName, store.id as storeId, category.name as nameCate FROM `products` "
+                + "JOIN `category` ON `products`.type = `category`.name "
+                + "JOIN `store` ON `products`.idStore = `store`.id"
+                + " WHERE products.id = '" + id + "'";
         Connection connection = Util.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement(str);
@@ -121,11 +121,12 @@ public class ProductDB {
     // lay theo ten san pham
     public List<Products> showNProducts(String name) {
         List<Products> list = new ArrayList<>();
-        String str = "SELECT * FROM `fashion`";
+        String str = "SELECT * FROM `products`";
         // connection : thiết lập kết nối đến CSDL
         Connection connection = Util.getConnection();
         if (name.length() > 0) {
             str += " WHERE name like '%" + name + "%'";
+            System.out.println(str);
             try {
                 PreparedStatement ps = connection.prepareStatement(str);
                 ResultSet rs = ps.executeQuery();
@@ -144,7 +145,7 @@ public class ProductDB {
                     p.setSell(rs.getInt("sell"));
                     p.setQuantity(rs.getInt("quantity"));
                     p.setCreateDate(rs.getString("createDate"));
-                    p.setStore(rs.getInt("shop"));
+                    p.setStore(rs.getInt("idStore"));
                     list.add(p);
                 }
                 ps.close();
@@ -158,7 +159,7 @@ public class ProductDB {
     // ham update
     public void updateSP(String name, float price, String des, String image, float discount, String type, String id) {
         Connection connection = Util.getConnection();
-        String sql = "UPDATE fashion SET name = ?, price = ?, des = ?, image =? discount=? type=? WHERE id = ?";
+        String sql = "UPDATE products SET name = ?, price = ?, des = ?, image =? discount=? type=? WHERE id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);
@@ -178,7 +179,7 @@ public class ProductDB {
     // ham kiem tra so luong san pham
     public boolean checkQuantitySP(int quantity, String id) {
         Connection connection = Util.getConnection();
-        String sql = "SELECT * FROM fashion WHERE id = '" + id + "'";
+        String sql = "SELECT * FROM products WHERE id = '" + id + "'";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -200,14 +201,14 @@ public class ProductDB {
     // ham update so luong
     public void updateQuantitySP(int quantity, String id) {
         Connection connection = Util.getConnection();
-        String sql = "SELECT * FROM fashion WHERE id = '" + id + "'";
+        String sql = "SELECT * FROM products WHERE id = '" + id + "'";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Products p = new Products();
                 p.setQuantity(rs.getInt("quantity"));
-                String sqlUd = "UPDATE fashion SET quantity=" + (p.getQuantity() - quantity) + " WHERE id = '" + id + "'";
+                String sqlUd = "UPDATE products SET quantity=" + (p.getQuantity() - quantity) + " WHERE id = '" + id + "'";
                 PreparedStatement psUd = connection.prepareStatement(sqlUd);
                 psUd.executeUpdate();
             }
@@ -219,7 +220,7 @@ public class ProductDB {
     // ham delete
     public void deleteSP(String id) {
         Connection connection = Util.getConnection();
-        String sql = "DELETE FROM fashion WHERE id = '" + id + "'";
+        String sql = "DELETE FROM products WHERE id = '" + id + "'";
 //        try {
 //            PreparedStatement ps = connection.prepareStatement(sql);
 //            ps.executeUpdate();
@@ -233,7 +234,7 @@ public class ProductDB {
     // ham insert
     public void insertSP(String id, String name, float price, String des, String image, float discount, String type, int quantity, String color, String size, String createDate) {
         Connection connection = Util.getConnection();
-        String sql = "INSERT INTO fashion (id, name, price, des, image, discount, type, quantity, color, size, createDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO products (id, name, price, des, image, discount, type, quantity, color, size, createDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, id);
@@ -257,7 +258,7 @@ public class ProductDB {
     // dem san pham de phan trang
     public int countProduct(String shop) {
         Connection connection = Util.getConnection();
-        String sql = "select count(*) as total from fashion";
+        String sql = "select count(*) as total from products";
         if (shop.length() > 0 && !shop.equals("null")) {
             sql += " WHERE shop ='" + shop + "'";
         }
@@ -277,9 +278,9 @@ public class ProductDB {
     public static List<Products> getListPage(int start, String shop) {
         ArrayList<Products> list = new ArrayList<>();
         Connection connection = Util.getConnection();
-        String sql = "select * from fashion limit 9 offset " + start;
+        String sql = "select * from products limit 9 offset " + start;
         if (shop.length() > 0) {
-            sql = "select * from fashion WHERE shop ='" + shop + "' limit 9 offset " + start;
+            sql = "select * from products WHERE shop ='" + shop + "' limit 9 offset " + start;
         }
         try {
             PreparedStatement ps = connection.prepareStatement(sql);

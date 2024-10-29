@@ -69,8 +69,8 @@
             <jsp:include page="header/navigation.jsp"></jsp:include>
 
                 <!-- Slider Area -->
-                <section class="hero-slider">
-                    <!-- Single Slider -->
+<!--                <section class="hero-slider">
+                     Single Slider 
                     <div class="single-slider">
                         <div class="container">
                             <div class="row no-gutters">
@@ -92,15 +92,15 @@
                             </div>
                         </div>
                     </div>
-                    <!--/ End Single Slider -->
-                </section>
+                    / End Single Slider 
+                </section>-->
                 <!--/ End Slider Area -->
 
                 <!-- Start Small Banner  -->
-                <section class="small-banner section">
+<!--                <section class="small-banner section">
                     <div class="container-fluid">
                         <div class="row">
-                            <!-- Single Banner  -->
+                             Single Banner  
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="single-banner">
                                     <img src="https://wpthemesgrid.com/themes/free/eshop/images/mini-banner1.jpg" alt="#">
@@ -111,8 +111,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- /End Single Banner  -->
-                            <!-- Single Banner  -->
+                             /End Single Banner  
+                             Single Banner  
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="single-banner">
                                     <img src="https://wpthemesgrid.com/themes/free/eshop/images/mini-banner2.jpg" alt="#">
@@ -123,8 +123,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- /End Single Banner  -->
-                            <!-- Single Banner  -->
+                             /End Single Banner  
+                             Single Banner  
                             <div class="col-lg-4 col-12">
                                 <div class="single-banner tab-height">
                                     <img src="https://wpthemesgrid.com/themes/free/eshop/images/mini-banner3.jpg" alt="#">
@@ -135,13 +135,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- /End Single Banner  -->
+                             /End Single Banner  
                         </div>
                     </div>
                 </section>
-                <!-- End Small Banner -->
+                 End Small Banner 
 
-                <!-- Start Product Area -->
+                 Start Product Area 
                 <div class="product-area section">
                     <div class="container">
                         <div class="row">
@@ -159,13 +159,13 @@
                                         List<Category> c = CategoryDB.getAll(1);
                                         for (Category item : c) {
                                             out.print("<form action='ChangePro'><button class='btn typePro' name='action' value='changePro' style='background: #fff;'>" + item.getName() + "</button>"
-                                                    + "<input type='hidden' name='idCate' value='" + item.getId() + "'></form>");
+                                                    + "<input type='hidden' name='idCate' value='" + item.getName() + "'></form>");
                                         }
                                     %>
                                 </div>
                             </div>
                             <div class="tab-content" id="myTabContent">
-                                <!-- Start Single Tab -->
+                                 Start Single Tab 
                                 <div class="tab-pane fade show active" id="man" role="tabpanel">
                                     <div class="tab-single">
                                         <div class="row">
@@ -176,7 +176,7 @@
                                                     newList = products;
 
                                                 } else {
-                                                    List<Products> lists = ProductDB.getAll("1");
+                                                    List<Products> lists = ProductDB.getAll("Electronics");
                                                     newList = lists;
                                                 }
                                                 for (Products sp : newList) {
@@ -231,13 +231,13 @@
                 </div>
             </div>
         </div>
-        <!-- End Product Area -->
+         End Product Area -->
 
         <!-- Start Midium Banner  -->
-        <section class="midium-banner">
+<!--        <section class="midium-banner">
             <div class="container">
                 <div class="row">
-                    <!-- Single Banner  -->
+                     Single Banner  
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="single-banner">
                             <img src="https://i.pinimg.com/564x/72/e1/1c/72e11ca280c09ad0e12c7118c09d6c04.jpg" alt="#">
@@ -248,8 +248,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /End Single Banner  -->
-                    <!-- Single Banner  -->
+                     /End Single Banner  
+                     Single Banner  
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="single-banner">
                             <img src="https://i.pinimg.com/564x/1d/fb/b4/1dfbb46d5c195ef92fca7bcf7d3f0f96.jpg" alt="#">
@@ -260,10 +260,10 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /End Single Banner  -->
+                     /End Single Banner  
                 </div>
             </div>
-        </section>
+        </section>-->
         <!-- End Midium Banner -->
 
         <!-- Start Most Popular -->
@@ -280,7 +280,7 @@
                     <div class="col-12">
                         <div class="owl-carousel popular-slider">
                             <%
-                                List<Products> listItem = ProductDB.getAll("1");
+                                List<Products> listItem = ProductDB.getAll("Electronics");
                                 for (Products sp : listItem) {
                                     String price = PassEndcodeSHA.formatVnd(sp.getPrice());
                                     String priceDiscount = PassEndcodeSHA.formatVnd((sp.getPrice() - (sp.getPrice() * (sp.getDiscount() / 100))));
@@ -333,7 +333,7 @@
             <div class="container">
                 <div class="row">
                     <%
-                        List<Category> cate = CategoryDB.getAll(0);
+                        List<Category> cate = CategoryDB.getAll(1);
                         for (Category item : cate) {
                             out.print("<div class='col-lg-4 col-md-6 col-12'>");
                             out.print("<div class='row'>"
@@ -342,7 +342,7 @@
                                     + "<h1>" + item.getName() + "</h1>"
                                     + "</div>"
                                     + "</div>");
-                            List<Products> list = ProductDB.getAll(String.valueOf(item.getId()));
+                            List<Products> list = ProductDB.getAll(String.valueOf(item.getName()));
                             for (Products sp : list) {
                                 String price = PassEndcodeSHA.formatVnd(sp.getPrice());
                                 out.print("<div class=\"single-list\">"
@@ -375,7 +375,7 @@
         </section>
         <!-- End Shop Home List  -->
 
-        <section class="cown-down">
+<!--        <section class="cown-down">
             <div class="section-inner ">
                 <div class="container-fluid">
                     <div class="row">
@@ -401,9 +401,10 @@
                 </div>
             </div>
         </section>
+-->
 
         <!-- Start Shop Blog  -->
-        <section class="shop-blog section">
+<!--        <section class="shop-blog section">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -415,7 +416,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-12">
                         <!-- Start Single Blog  -->
-                        <div class="shop-single-blog">
+<!-- comment            <div class="shop-single-blog">
                             <img src="https://wpthemesgrid.com/themes/free/eshop/images/blog1.jpg" alt="#">
                             <div class="content">
                                 <p class="date">22 May , 2023. Monday</p>
@@ -424,9 +425,9 @@
                             </div>
                         </div>
                         <!-- End Single Blog  -->
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Start Single Blog  -->
+                    <!--</div>-->
+<!--                    <div class="col-lg-4 col-md-6 col-12">
+                         Start Single Blog  
                         <div class="shop-single-blog">
                             <img src="https://wpthemesgrid.com/themes/free/eshop/images/blog2.jpg" alt="#">
                             <div class="content">
@@ -435,10 +436,10 @@
                                 <a href="#" class="more-btn">Continue Reading</a>
                             </div>
                         </div>
-                        <!-- End Single Blog  -->
+                         End Single Blog  
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Start Single Blog  -->
+                         Start Single Blog  
                         <div class="shop-single-blog">
                             <img src="https://wpthemesgrid.com/themes/free/eshop/images/blog3.jpg" alt="#">
                             <div class="content">
@@ -447,15 +448,15 @@
                                 <a href="#" class="more-btn">Continue Reading</a>
                             </div>
                         </div>
-                        <!-- End Single Blog  -->
+                         End Single Blog  
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
         <!-- End Shop Blog  -->
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+<!--        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -470,43 +471,43 @@
                                         <div class="button" style="margin-top:30px;">
                                             <a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/" target="_blank" class="btn" style="color:#fff;">Buy Now!</a>
                                         </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        <!-- Modal end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- Modal end -->
 
-                                        <!-- Start Footer Area -->
-                                        <footer>
-                                            <jsp:include page="footer/footer.jsp"></jsp:include>
-                                        </footer>
-                                        <!-- /End Footer Area -->
+        <!-- Start Footer Area -->
+        <!--<footer>-->
+            <%--<jsp:include page="footer/footer.jsp"></jsp:include>--%>
+        <!--</footer>-->
+        <!-- /End Footer Area -->
 
-                                        <script src="js/jquery.min.js"></script>
-                                        <script src="js/jquery-migrate-3.0.0.js"></script>
-                                        <script src="js/jquery-ui.min.js"></script>
-                                        <script src="js/popper.min.js"></script>
-                                        <script src="js/bootstrap.min.js"></script>
-                                        <script src="js/slicknav.min.js"></script>
-                                        <script src="js/owl-carousel.js"></script>
-                                        <script src="js/magnific-popup.js"></script>
-                                        <script src="js/waypoints.min.js"></script>
-                                        <script src="js/finalcountdown.min.js"></script>
-                                        <script src="js/nicesellect.js"></script>
-                                        <script src="js/flex-slider.js"></script>
-                                        <script src="js/scrollup.js"></script>
-                                        <script src="js/onepage-nav.min.js"></script>
-                                        <script src="js/easing.js"></script>
-                                        <script src="js/active.js"></script>
-                                        </body>
-                                        <script>
-                                            let typePro = document.querySelectorAll(".typePro");
-                                            let urlCurrent = window.location.href;
-                                            let index = urlCurrent.replace("http://localhost:8080/NewFashion/ChangePro?action=changePro&idCate=", '');
-                                            if (!isNaN(Number(index))) {
-                                                typePro[index - 1].style.background = "#F7941D";
-                                            }
-                                        </script>
-                                        </html>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slicknav.min.js"></script>
+    <script src="js/owl-carousel.js"></script>
+    <script src="js/magnific-popup.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/finalcountdown.min.js"></script>
+    <script src="js/nicesellect.js"></script>
+    <script src="js/flex-slider.js"></script>
+    <script src="js/scrollup.js"></script>
+    <script src="js/onepage-nav.min.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/active.js"></script>
+    </body>
+    <script>
+        let typePro = document.querySelectorAll(".typePro");
+        let urlCurrent = window.location.href;
+        let index = urlCurrent.replace("http://localhost:8080/NewFashion/ChangePro?action=changePro&idCate=", '');
+        if (!isNaN(Number(index))) {
+            typePro[index - 1].style.background = "#F7941D";
+        }
+    </script>
+    </html>

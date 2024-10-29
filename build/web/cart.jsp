@@ -193,12 +193,6 @@
         </div>
         <!--/ End Shopping Cart -->
 
-        <!-- Start Footer Area -->
-        <footer>
-            <jsp:include page="footer/footer.jsp"></jsp:include>
-        </footer>
-        <!-- /End Footer Area -->
-
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate-3.0.0.js"></script>
         <script src="js/jquery-ui.min.js"></script>

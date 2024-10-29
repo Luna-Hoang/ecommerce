@@ -313,7 +313,7 @@
 
         <!-- Start Footer Area -->
         <footer>
-            <jsp:include page="footer/footer.jsp"></jsp:include>
+            <%--<jsp:include page="footer/footer.jsp"></jsp:include>--%>
         </footer>
         <!-- /End Footer Area -->
 

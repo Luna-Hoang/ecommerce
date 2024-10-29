@@ -151,8 +151,5 @@
                 </div> 
             </div>            
         </div>
-        <footer class="footer">
-            <jsp:include page="footer/footer.jsp"></jsp:include>
-        </footer>
     </body>
 </html>

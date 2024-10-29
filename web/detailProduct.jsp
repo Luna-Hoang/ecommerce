@@ -326,7 +326,7 @@
             </div>
         </div>         
 
-        <jsp:include page="footer/footer.jsp"></jsp:include>
+    
 
         <div class="toast" style="position: absolute;top: 60%;left: 50%;transform: translateX(-50%);">
             <div class="toast-header">

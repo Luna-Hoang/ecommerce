@@ -166,11 +166,6 @@
         </section>
         <!--/ End Checkout -->
 
-        <!-- Start Footer Area -->
-        <footer>
-            <jsp:include page="footer/footer.jsp"></jsp:include>
-        </footer>
-        <!-- /End Footer Area -->
 
         <!-- Jquery -->
         <script src="js/jquery.min.js"></script>

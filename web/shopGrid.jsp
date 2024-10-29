@@ -81,13 +81,12 @@
                                 <div class="single-widget category">
                                     <h3 class="title">Categories</h3>
                                     <ul class="categor-list">
-                                        <li><a href="#">T-shirts</a></li>
-                                        <li><a href="#">jacket</a></li>
-                                        <li><a href="#">jeans</a></li>
-                                        <li><a href="#">sweatshirts</a></li>
-                                        <li><a href="#">trousers</a></li>
-                                        <li><a href="#">kitwears</a></li>
-                                        <li><a href="#">accessories</a></li>
+                                        <li><a href="#">Mobile Phone</a></li>
+                                        <li><a href="#">Laptop</a></li>
+                                        <li><a href="#">Electronics</a></li>
+                                        <li><a href="#">Shoes</a></li>
+                                        <li><a href="#">Clothes</a></li>
+                                        <li><a href="#">Books</a></li>
                                     </ul>
                                 </div>
 
@@ -121,7 +120,7 @@
                                 </div>
 
 
-                                <div class="single-widget recent-post">
+<!--                                <div class="single-widget recent-post">
                                     <h3 class="title">Recent post</h3>
 
                                     <div class="single-post first">
@@ -175,17 +174,17 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div>-->
 
 
                                 <div class="single-widget category">
                                     <h3 class="title">Manufacturers</h3>
                                     <ul class="categor-list">
-                                        <li><a href="#">Forever</a></li>
-                                        <li><a href="#">giordano</a></li>
-                                        <li><a href="#">abercrombie</a></li>
-                                        <li><a href="#">ecko united</a></li>
-                                        <li><a href="#">zara</a></li>
+                                        <li><a href="#">Tech Store</a></li>
+                                        <li><a href="#">Fashion Hub</a></li>
+                                        <li><a href="#">Gadget Store</a></li>
+                                        <li><a href="#">Sport Store</a></li>
+                                        <li><a href="#">Book Store</a></li>
                                     </ul>
                                 </div>
 
@@ -276,7 +275,7 @@
             </div>    
         </section>
 
-        <jsp:include page="footer/footer.jsp"></jsp:include>
+        <%--<jsp:include page="footer/footer.jsp"></jsp:include>--%>
 
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate-3.0.0.js"></script>

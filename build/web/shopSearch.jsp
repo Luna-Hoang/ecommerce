@@ -157,8 +157,6 @@
             </div>    
         </section>
 
-        <jsp:include page="footer/footer.jsp"></jsp:include>
-
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate-3.0.0.js"></script>
         <script src="js/jquery-ui.min.js"></script>

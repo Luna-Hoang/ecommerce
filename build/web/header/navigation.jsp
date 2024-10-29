@@ -18,8 +18,8 @@
                                 <div class="nav-inner">	
                                     <ul class="nav main-menu menu navbar-nav">
                                         <li class="active"><a href="#">Home</a></li>
-                                        <li><a href="#">Product</a></li>												
-                                        <li><a href="#">Service</a></li>
+<!--                                        <li><a href="#">Product</a></li>												
+                                        <li><a href="#">Service</a></li>-->
                                         <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
                                             <ul class="dropdown">
                                                 <li><a href="shopGrid.jsp">Shop</a></li>
@@ -27,7 +27,7 @@
                                                 <li><a href="checkout.jsp">Invoice</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Pages<i class="ti-angle-down"></i></a>
+<!--                                        <li><a href="#">Pages<i class="ti-angle-down"></i></a>
                                             <ul class="dropdown">
                                                 <li><a href="aboutUs.html">About Us</a></li>
                                             </ul>
@@ -37,7 +37,7 @@
                                                 <li><a href="blog-single-sidebar.jsp">Blog</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.jsp">Contact Us</a></li>
+                                        <li><a href="contact.jsp">Contact Us</a></li>-->
                                     </ul>
                                 </div>
                             </div>

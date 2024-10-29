@@ -25,9 +25,9 @@ public class Util {
         else{
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                String url = "jdbc:mysql://localhost:3306/fashion";
+                String url = "jdbc:mysql://localhost:3306/ecom";
                 String user = "root";
-                String pass = "";
+                String pass = "12345678";
                 try {
                     connection = (Connection) DriverManager.getConnection(url, user, pass);
                 } catch (SQLException ex) {
